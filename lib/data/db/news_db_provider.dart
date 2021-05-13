@@ -1,12 +1,17 @@
 
 import 'package:flutter_news/data/models/item_model.dart';
+import 'package:flutter_news/data/repository/repository.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
 import 'dart:io';
 import 'package:path/path.dart';
 
-class NewsDbProvider {
+class NewsDbProvider implements Source, Cache {
   Database database;
+
+  NewsDbProvider() {
+    init();
+  }
 
   void init() async {
     Directory documentsDirectory = await getApplicationDocumentsDirectory();
@@ -14,7 +19,7 @@ class NewsDbProvider {
 
     database = await openDatabase(path, version: 1,
         onCreate: (Database newDb, int version) {
-      newDb.execute('''
+          newDb.execute('''
               CREATE TABLE Items
               (
                 id INTEGER PRIMARY KEY,
@@ -32,7 +37,13 @@ class NewsDbProvider {
                 descendants INTEGER
               )
             ''');
-    });
+        });
+  }
+
+  @override
+  Future<List<int>> fetchTopIds() {
+    // TODO: implement fetchTopIds
+    throw UnimplementedError();
   }
 
   Future<ItemModel> fetchItem(int id) async {
@@ -41,13 +52,14 @@ class NewsDbProvider {
         where: 'id = ?',
         whereArgs: [id]);
 
-    if(maps.length > 0) {
-        return ItemModel.fromDb(maps.first);
+    if (maps.length > 0) {
+      return ItemModel.fromDb(maps.first);
     }
     return null;
   }
 
-   addItem(ItemModel itemModel) async{
+  Future<int> addItem(ItemModel itemModel) async {
     return await database.insert('Items', itemModel.toMap());
   }
 }
+final newsDbProvider = NewsDbProvider();

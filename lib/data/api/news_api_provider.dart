@@ -2,11 +2,12 @@ import 'dart:convert';
 
 
 import 'package:flutter_news/data/models/item_model.dart';
+import 'package:flutter_news/data/repository/repository.dart';
 import 'package:http/http.dart' show Client;
 
 final String _root = 'hacker-news.firebaseio.com';
 
-class NewsApiProvider {
+class NewsApiProvider implements Source{
   Client client = Client();
 
     Future<List<int>> fetchTopIds() async {
