@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:flutter_news/domain/repository/news_api_provider.dart';
+import 'file:///D:/Work%20InternShip/flutter_news/flutter_news/lib/data/api/news_api_provider.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/testing.dart';
 import 'package:http/http.dart';
