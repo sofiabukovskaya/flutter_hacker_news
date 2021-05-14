@@ -6,7 +6,9 @@ Widget newsList(StoriesBloc bloc) {
       stream: bloc.topIds,
       builder: (context, AsyncSnapshot<List<int>> snapshot) {
         if (!snapshot.hasData) {
-          return Text('Still waiting on Ids');
+          return Center(
+            child: CircularProgressIndicator(),
+          );
         }
         return ListView.builder(
             itemCount: snapshot.data.length,

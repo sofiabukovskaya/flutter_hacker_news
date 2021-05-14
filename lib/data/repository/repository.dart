@@ -11,7 +11,7 @@ class Repository {
  List<Cache> cashes = <Cache> [
    newsDbProvider
  ];
-  Future<List<int>> fetchTopIds() {
+ Future<List<int>> fetchTopIds() {
       return sources[1].fetchTopIds();
   }
 

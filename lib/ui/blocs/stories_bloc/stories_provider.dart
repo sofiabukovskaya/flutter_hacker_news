@@ -14,6 +14,6 @@ class StoriesProvider extends InheritedWidget {
   }
 
   static StoriesBloc of(BuildContext context){
-    return (context.dependOnInheritedWidgetOfExactType(aspect: StoriesProvider) as StoriesProvider).bloc;
+    return (context.dependOnInheritedWidgetOfExactType<StoriesProvider>()).bloc;
   }
 }
