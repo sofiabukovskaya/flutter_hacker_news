@@ -24,7 +24,6 @@ class Repository {
           break;
         }
       }
-      
       for (var cache in cashes) {
         cache.addItem(itemModel);
       }

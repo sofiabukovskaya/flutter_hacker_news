@@ -41,9 +41,9 @@ class NewsDbProvider implements Source, Cache {
   }
 
   @override
+  // ignore: missing_return
   Future<List<int>> fetchTopIds() {
-    // TODO: implement fetchTopIds
-    throw UnimplementedError();
+
   }
 
   Future<ItemModel> fetchItem(int id) async {
