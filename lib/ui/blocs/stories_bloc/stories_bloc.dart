@@ -31,6 +31,10 @@ class StoriesBloc {
          <int, Future<ItemModel>> {},
         );
   }
+
+  clearCache() {
+    return _repository.clearCache();
+  }
   
   StoriesBloc() {
     _items.stream.transform(_itemsTransformer());

@@ -61,5 +61,9 @@ class NewsDbProvider implements Source, Cache {
   Future<int> addItem(ItemModel itemModel) async {
     return await database.insert('Items', itemModel.toMap(), conflictAlgorithm: ConflictAlgorithm.ignore);
   }
+
+  clear() {
+    database.delete('Items');
+  }
 }
 final newsDbProvider = NewsDbProvider();
