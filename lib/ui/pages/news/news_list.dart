@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_news/ui/blocs/stories_bloc/stories_bloc.dart';
-import 'package:flutter_news/ui/pages/widgets/news_list_tile.dart';
-import 'package:flutter_news/ui/pages/widgets/refresh.dart';
+import 'package:flutter_news/ui/pages/news/widgets/news_list_tile.dart';
+import 'package:flutter_news/ui/pages/news/widgets/refresh.dart';
+
 
 Widget newsList(StoriesBloc bloc) {
   return StreamBuilder(

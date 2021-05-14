@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_news/ui/blocs/stories_bloc/stories_provider.dart';
-import 'file:///D:/Work%20InternShip/flutter_news/flutter_news/lib/ui/pages/news_list.dart';
+import 'package:flutter_news/ui/pages/news/news_list.dart';
 
 class News extends StatelessWidget {
   @override

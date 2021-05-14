@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_news/data/models/item_model.dart';
 import 'package:flutter_news/ui/blocs/stories_bloc/stories_provider.dart';
-import 'package:flutter_news/ui/pages/widgets/loading_container.dart';
+import 'package:flutter_news/ui/pages/news/widgets/loading_container.dart';
+
 
 class NewsListTile extends StatelessWidget {
   final int itemId;
@@ -22,16 +23,19 @@ class NewsListTile extends StatelessWidget {
                   if(!itemSnapshot.hasData) {
                     return LoadingContainer();
                   }
-                  return buildTile(itemSnapshot.data);
+                  return buildTile(itemSnapshot.data, context);
            });
      },
    );
   }
 
-  Widget buildTile(ItemModel item) {
+  Widget buildTile(ItemModel item, BuildContext context) {
     return Column(
       children: [
         ListTile(
+          onTap: () {
+            Navigator.pushNamed(context, '/${item.id}');
+          },
           title: Text(item.title),
           subtitle: Text('${item.score} points'),
           trailing: Column(
