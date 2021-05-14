@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:async';
 
 import 'package:flutter_news/data/models/item_model.dart';
 import 'package:flutter_news/data/repository/repository.dart';
@@ -8,13 +7,13 @@ import 'package:rxdart/rxdart.dart';
 class StoriesBloc {
 
   final _repository = Repository();
-  // final _topIds = PublishSubject<List<int>>();
+  final _topIds = PublishSubject<List<int>>();
   final _items = BehaviorSubject<int>();
-  final _topIds =  StreamController<List<int>>();
+
 
   Observable<Map<int, Future<ItemModel>>> items;
 
-  Stream<List<int>> get topIds => _topIds.stream; //Observable был
+  Observable<List<int>> get topIds => _topIds.stream;
 
   Function(int) get fetchItem => _items.sink.add;
 
